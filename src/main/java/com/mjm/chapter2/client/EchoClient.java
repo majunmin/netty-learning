@@ -34,7 +34,7 @@ public class EchoClient {
     public static void main(String[] args) {
 
         String host = "localhost";
-        int port = 8087;
+        int port = 8989;
         new EchoClient(host, port).start();
     }
 
