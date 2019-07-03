@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
  * @description
  * @datetime 2019-06-25 16:37
  * @since
+ *
  */
 @ChannelHandler.Sharable
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
@@ -26,6 +27,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        // Unpooled  工具类 用于做 ByteBuf转换的
         ctx.writeAndFlush(Unpooled.copiedBuffer("netty rocks", StandardCharsets.UTF_8));
         super.channelActive(ctx);
     }

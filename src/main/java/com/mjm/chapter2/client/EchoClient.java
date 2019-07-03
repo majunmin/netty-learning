@@ -43,10 +43,11 @@ public class EchoClient {
 
         Bootstrap bootstrap = new Bootstrap();
 
-        bootstrap.group(group)
+        bootstrap.group(group) //绑定线程组
                 .channel(NioSocketChannel.class)
                 .remoteAddress(new InetSocketAddress(host, port))
                 // 在创建 Channel 时向 ChannelPipeline 中添加一个 EchoClientHandler 实例
+                // 客户端 的 bootstrap 没有 childHandler() => 客户端必须绑定 handler
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
