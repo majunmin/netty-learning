@@ -23,9 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class LogEventBroadcaster {
 
     private final EventLoopGroup group;
-
     private final Bootstrap bootstrap;
-
     private final File file;
 
     public LogEventBroadcaster(InetSocketAddress address, File file){
@@ -60,7 +58,12 @@ public class LogEventBroadcaster {
                 raf.close();
             }
 
-            TimeUnit.SECONDS.sleep(1);
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException ex){
+                Thread.interrupted();
+                break;
+            }
         }
     }
 
@@ -69,7 +72,7 @@ public class LogEventBroadcaster {
     }
 
     public static void main(String[] args) {
-        LogEventBroadcaster eventBroadcaster = new LogEventBroadcaster(new InetSocketAddress("255.255.255.255", 9999), new File("./index.html"));
+        LogEventBroadcaster eventBroadcaster = new LogEventBroadcaster(new InetSocketAddress("255.255.255.255", 8800), new File("./index.html"));
         try {
             eventBroadcaster.run();
         } catch (Exception e) {

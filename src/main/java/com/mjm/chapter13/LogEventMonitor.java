@@ -37,7 +37,7 @@ public class LogEventMonitor {
     }
 
     public Channel bind() {
-        return bootstrap.bind(0).syncUninterruptibly().channel();
+        return bootstrap.bind().syncUninterruptibly().channel();
     }
 
     public void stop(){
@@ -45,7 +45,7 @@ public class LogEventMonitor {
     }
 
     public static void main(String[] args) {
-        LogEventMonitor logEventMonitor = new LogEventMonitor(new InetSocketAddress(9999));
+        LogEventMonitor logEventMonitor = new LogEventMonitor(new InetSocketAddress(8800));
 
         try {
             Channel channel = logEventMonitor.bind();
