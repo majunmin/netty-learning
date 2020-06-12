@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @since
  */
 @Data
-@Accessors(chain=true)
+@Accessors(chain = true)
 public class RpcRequest implements Serializable {
 
     private String requestId;

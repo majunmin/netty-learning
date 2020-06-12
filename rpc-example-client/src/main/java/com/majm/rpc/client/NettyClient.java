@@ -17,7 +17,7 @@ public class NettyClient {
 
     public static void main(String[] args) {
         Hello hello = new Hello("majm", "天下武功,为快不破!!");
-        NettyClientTransport clientTransport = new NettyClientTransport(new InetSocketAddress(9000));
+        NettyClientTransport clientTransport = new NettyClientTransport();
 
         RpcClientProxy rpcClientProxy = new RpcClientProxy(clientTransport);
         HelloService helloService = rpcClientProxy.getProxy(HelloService.class);

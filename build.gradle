@@ -5,7 +5,7 @@ plugins {
 group 'com.mjm'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -13,10 +13,10 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/io.netty/netty-all
-    compile group: 'io.netty', name: 'netty-all', version: '4.1.36.Final'
-    compile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+    implementation 'io.netty:netty-all:4.1.36.Final'
+    implementation group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.2'
 }

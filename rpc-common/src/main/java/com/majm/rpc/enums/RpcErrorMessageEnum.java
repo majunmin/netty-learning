@@ -3,6 +3,10 @@ package com.majm.rpc.enums;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * @author majunmin
+ */
+
 @AllArgsConstructor
 @Getter
 public enum RpcErrorMessageEnum {
@@ -13,5 +17,4 @@ public enum RpcErrorMessageEnum {
     REQUEST_NOT_MATCH_RESPONSE("返回结果错误！请求和返回的相应不匹配");
 
     private final String message;
-
 }

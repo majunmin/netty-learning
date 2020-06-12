@@ -22,7 +22,7 @@ public class EchoServer {
 
     private int port;
 
-    public EchoServer(int port){
+    public EchoServer(int port) {
         this.port = port;
     }
 
@@ -41,7 +41,7 @@ public class EchoServer {
                 // 指定所使用的 NIO 传输 Channel
                 .channel(NioServerSocketChannel.class)
                 .localAddress(new InetSocketAddress(port))
-                // 添加一个 EchoServerHandler 到 子Channel 的 ChannelPipline
+                // 添加一个 EchoServerHandler 到 子Channel 的 ChannelPipeline
                 // 服务端必须绑定 处理器
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override

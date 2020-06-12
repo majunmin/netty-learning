@@ -10,5 +10,11 @@ import com.majm.rpc.dto.RpcRequest;
  */
 public interface ClientTransport {
 
+    /**
+     * send reqeust to server
+     *
+     * @param rpcRequest
+     * @return
+     */
     Object sendRpcRequest(RpcRequest rpcRequest);
 }

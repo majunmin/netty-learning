@@ -1,11 +1,10 @@
 package com.mjm.chapter2.client;
 
-import com.mjm.chapter2.server.EchoServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -22,11 +21,11 @@ import java.net.InetSocketAddress;
  */
 public class EchoClient {
 
-    public final String host ;
+    public final String host;
 
     public final int port;
 
-    public EchoClient(String host, int port){
+    public EchoClient(String host, int port) {
         this.host = host;
         this.port = port;
     }
@@ -58,6 +57,14 @@ public class EchoClient {
         try {
             //连接到远程节点，阻塞等待直到连接完成
             ChannelFuture future = bootstrap.connect().sync();
+            future.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    // 注册一个 ChannelFutureListener 在操作完成时 得到一个通知
+                }
+
+            });
+
             // 阻塞，直到 Channel 关闭
             future.channel().closeFuture().sync();
 

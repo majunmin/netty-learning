@@ -1,5 +1,6 @@
 package com.majm.rpc.transport.netty.server;
 
+import com.majm.rpc.config.CustomShutdownHook;
 import com.majm.rpc.dto.RpcRequest;
 import com.majm.rpc.dto.RpcResponse;
 import com.majm.rpc.provider.ServiceProvider;
@@ -52,13 +53,14 @@ public class NettyServer {
         serviceProvider = new ServiceProviderImpl();
     }
 
-    public <T> void publishService(T service, Class<T> serviceClass){
+    public <T> void publishService(T service, Class<T> serviceClass) {
         serviceProvider.addServiceProvider(service, serviceClass);
         serviceRegistry.registerService(serviceClass.getCanonicalName(), new InetSocketAddress(host, port));
         start();
     }
 
-    public void start(){
+    public void start() {
+        CustomShutdownHook.getCustomShutdownHook().clearAll();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workGroup = new NioEventLoopGroup();

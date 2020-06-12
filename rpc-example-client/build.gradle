@@ -12,9 +12,9 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile project(':rpc-core')
-    compile project(':rpc-service-api')
-    compile 'org.projectlombok:lombok:1.18.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation project(':rpc-core')
+    implementation project(':rpc-service-api')
+    implementation 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
