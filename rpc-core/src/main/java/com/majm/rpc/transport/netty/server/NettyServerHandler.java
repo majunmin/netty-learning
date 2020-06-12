@@ -3,7 +3,7 @@ package com.majm.rpc.transport.netty.server;
 import com.majm.rpc.dto.RpcRequest;
 import com.majm.rpc.dto.RpcResponse;
 import com.majm.rpc.transport.socket.RpcRequestHandler;
-import com.majm.rpc.utils.concurrent.ThreadPoolFactory;
+import com.majm.rpc.utils.concurrent.ThreadPoolFactoryUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -27,7 +27,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<RpcRequest> 
 
     static {
         rpcRequestHandler = new RpcRequestHandler();
-        threadPool = ThreadPoolFactory.createDefaultThreadPool(THREAD_NAME_PREFIX);
+        threadPool = ThreadPoolFactoryUtils.createCustomThreadPoolIfAbsent(THREAD_NAME_PREFIX);
     }
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, RpcRequest msg) throws Exception {

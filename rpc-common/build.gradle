@@ -17,6 +17,8 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.30'
     compile 'org.slf4j:slf4j-jcl:1.7.30'
     compile 'commons-logging:commons-logging:1.2'
+    implementation 'org.apache.curator:curator-recipes:4.0.1'
+    implementation 'org.apache.zookeeper:zookeeper'
     compile 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 }

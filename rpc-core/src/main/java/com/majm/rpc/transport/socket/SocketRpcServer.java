@@ -1,11 +1,12 @@
 package com.majm.rpc.transport.socket;
 
+import com.majm.rpc.config.CustomShutdownHook;
 import com.majm.rpc.provider.ServiceProvider;
 import com.majm.rpc.provider.ServiceProviderImpl;
 import com.majm.rpc.registry.ServiceRegistry;
 import com.majm.rpc.registry.ZkServiceProvider;
 import com.majm.rpc.transport.SocketRpcRequestHandlerRunnable;
-import com.majm.rpc.utils.concurrent.ThreadPoolFactory;
+import com.majm.rpc.utils.concurrent.ThreadPoolFactoryUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
@@ -35,7 +36,7 @@ public class SocketRpcServer {
         this.port = port;
         serviceRegistry = new ZkServiceProvider();
         serviceProvider = new ServiceProviderImpl();
-        threadPool = ThreadPoolFactory.createDefaultThreadPool("socket-server-rpc-pool");
+        threadPool = ThreadPoolFactoryUtils.createCustomThreadPoolIfAbsent("socket-server-rpc-pool");
     }
 
     public <T> void publishService(T service, Class<T> serviceClass) {
@@ -47,6 +48,7 @@ public class SocketRpcServer {
     public void start() {
         try (ServerSocket server = new ServerSocket()) {
             server.bind(new InetSocketAddress(host, port));
+            CustomShutdownHook.getCustomShutdownHook().clearAll();
             log.info("server start...");
             Socket socket;
             while ((socket = server.accept()) != null) {

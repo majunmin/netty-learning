@@ -14,7 +14,7 @@ import com.majm.rpc.transport.socket.SocketRpcClient;
 public class SocketClientMain {
 
     public static void main(String[] args) {
-        SocketRpcClient socketRpcClient = new SocketRpcClient("localhost", 9000);
+        SocketRpcClient socketRpcClient = new SocketRpcClient();
         RpcClientProxy rpcClientProxy = new RpcClientProxy(socketRpcClient);
         HelloService helloService = rpcClientProxy.getProxy(HelloService.class);
 
