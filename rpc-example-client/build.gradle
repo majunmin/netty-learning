@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'junit:junit:4.13.1'
     implementation project(':rpc-core')
     implementation project(':rpc-service-api')
     implementation 'org.projectlombok:lombok:1.18.12'
