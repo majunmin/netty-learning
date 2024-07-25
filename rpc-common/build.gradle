@@ -12,13 +12,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
     implementation 'com.google.guava:guava:29.0-jre'
-    implementation 'org.slf4j:slf4j-api:1.7.30'
-    implementation 'org.slf4j:slf4j-jcl:1.7.30'
-    implementation 'commons-logging:commons-logging:1.2'
+    compile 'org.slf4j:slf4j-api:1.7.30'
+    compile 'org.slf4j:slf4j-jcl:1.7.30'
+    compile 'commons-logging:commons-logging:1.2'
     implementation 'org.apache.curator:curator-recipes:4.0.1'
     implementation 'org.apache.zookeeper:zookeeper'
-    implementation 'org.projectlombok:lombok:1.18.12'
+    compile 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 }

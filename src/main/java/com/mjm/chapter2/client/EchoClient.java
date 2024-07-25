@@ -19,7 +19,7 @@ import java.net.InetSocketAddress;
  * @datetime 2019-06-25 16:42
  * @since
  */
-public class EchoClient {
+public class  EchoClient {
 
     public final String host;
 

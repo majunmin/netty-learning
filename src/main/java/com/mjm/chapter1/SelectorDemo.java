@@ -26,13 +26,13 @@ public class SelectorDemo {
 
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
 
-        // 创建一个选择器
-        Selector selector = Selector.open();
-
         // 服务端 socket 监听 8080端口, 并配置为 非阻塞模式  bind  listen
         serverSocketChannel.socket().bind(new InetSocketAddress(8080));
         // 配置非阻塞 channel
         serverSocketChannel.configureBlocking(false);
+
+        // 创建一个选择器
+        Selector selector = Selector.open();
 
         // 将 channel注册进 selector(一个选择器 可以同时处理 多个 channel 的事件)
         // 通常我们都是先注册一个  OP_ACCEPT 事件,
@@ -46,7 +46,7 @@ public class SelectorDemo {
                 continue;
             }
 
-            // 获取 IO 操作就绪的 SelectionKey, 通过 SelectionKey 可以知道哪些Channel 的 哪类IO操作已经就绪
+            // * 获取 IO 操作就绪的 SelectionKey, 通过 SelectionKey 可以知道哪些Channel 的 哪类IO操作已经就绪
             Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
             while (keyIterator.hasNext()) {
                 SelectionKey key = keyIterator.next();
